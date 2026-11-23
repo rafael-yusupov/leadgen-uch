@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Реклама для учебных центров: считаем оплаты, а не заявки</title>
+<meta name="description" content="Meta Ads для детских центров, языковых школ, школ программирования и подготовки к поступлению. Видим, какой ролик приносит оплаты, и масштабируем только его.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0b09;--card:#18140f;--line:#2b251d;--text:#f5f2ea;--mute:#a59d8f;--yellow:#F7F46A;--ink:#111;--paper:#f3efe6;--red:#ff7a5c}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:400 17px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:76px;overflow-x:hidden}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:64px 0}
+h1,h2,h3,.os{font-family:Oswald,"Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;line-height:1.12;letter-spacing:.01em}
+h1{font-size:clamp(44px,9.5vw,92px)}
+h2{font-size:clamp(32px,5.8vw,60px);margin-bottom:18px}
+h3{font-size:22px;line-height:1.15}
+.y{color:var(--yellow)}
+.mark{background:linear-gradient(var(--yellow),var(--yellow)) 0 62%/100% .96em no-repeat;color:var(--ink);padding:0 .14em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.tag{font:600 13px/1.2 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:16px;display:block}
+.lead{font-size:clamp(18px,2.2vw,21px);color:#ddd8cc;max-width:640px}
+.btn{display:inline-block;background:var(--yellow);color:var(--ink);font:700 19px/1 Oswald,sans-serif;text-transform:uppercase;letter-spacing:.04em;padding:20px 30px;border-radius:6px;text-decoration:none;border:0;cursor:pointer;transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(247,244,106,.25)}
+.under{font-size:14px;color:var(--mute);margin-top:14px}
+.ex{display:inline-block;font:600 11px/1 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;border:1px solid currentColor;border-radius:100px;padding:5px 9px;opacity:.6}
+.paper{background:var(--paper);color:var(--ink)}
+.paper .tag{color:#6b6657}.paper .lead{color:#33302a}
+
+/* появление при скролле */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}
+.rv.in{opacity:1;transform:none}
+
+/* бегущая строка */
+.tick{background:var(--yellow);color:var(--ink);overflow:hidden;white-space:nowrap;font:700 14px/1 Oswald,sans-serif;letter-spacing:.1em;text-transform:uppercase;padding:10px 0}
+.tick div{display:inline-block;animation:tick 28s linear infinite}
+.tick span{margin:0 18px}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+nav{padding:16px 0}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px}
+nav .logo{font:700 clamp(13px,3.7vw,20px)/1 Oswald,sans-serif;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
+nav a.s{font:600 clamp(12px,3.3vw,14px)/1 Inter,sans-serif;color:var(--text);text-decoration:none;border:1px solid #4a4234;border-radius:100px;padding:10px 14px;white-space:nowrap;flex:none}
+
+/* hero */
+.hero{padding:32px 0 72px;background:radial-gradient(900px 520px at 90% -10%,rgba(247,244,106,.11),transparent 60%)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero .lead{margin:22px 0 30px}
+.dash{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.dash .hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13px;color:var(--mute)}
+.row{display:grid;grid-template-columns:1fr auto;gap:6px 12px;padding:14px;border:1px solid var(--line);border-radius:12px;margin-top:10px;transition:border-color .4s,background .4s}
+.row .nm{font-weight:600;font-size:15px}
+.row .st{display:flex;gap:16px;font-size:13px;color:var(--mute);grid-column:1/-1}
+.row .st b{color:var(--text);font-weight:600}
+.row .pay{font:700 30px/1 Oswald,sans-serif;text-align:right}
+.row .pay small{display:block;font:400 11px Inter;color:var(--mute);margin-top:3px}
+.bdg{font:700 12px/1 Oswald,sans-serif;letter-spacing:.1em;padding:6px 9px;border-radius:5px;opacity:0;transform:scale(.8);transition:.3s;align-self:start;justify-self:end}
+.dash.done .bdg{opacity:1;transform:none}
+.dash.done .row.up{border-color:var(--yellow);background:rgba(247,244,106,.07)}
+.dash.done .row.dn{opacity:.55}
+.up .bdg{background:var(--yellow);color:var(--ink)}
+.dn .bdg{background:#3a2019;color:var(--red)}
+.ts .bdg{background:#2b251d;color:#cfc9bc}
+
+.row .q{grid-column:1/-1;height:10px;border-radius:10px;background:#2b251d;overflow:hidden;margin-top:4px}
+.row .q i{display:block;height:100%;width:0;background:#8a8273;border-radius:10px;transition:width 1.3s cubic-bezier(.2,.8,.2,1)}
+.row.up .q i{background:var(--yellow)}
+.dash .ft{font-size:14px;color:#cfc9bc;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.hero .stats{grid-template-columns:repeat(3,1fr);gap:14px;align-items:start}
+.stats div{border-top:2px solid var(--yellow);padding-top:14px}
+.stats b{display:block;font:700 clamp(34px,5.4vw,56px)/1.05 Oswald,sans-serif}
+.stats div>span{font-size:14px;color:var(--mute)}
+.ans{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.ans div{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--card);font:700 20px/1.15 Oswald,sans-serif;text-transform:uppercase;color:#6b6352;transition:color .4s,border-color .4s,background .4s}
+.ans div:before{content:"?";display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:2px solid currentColor;margin-bottom:14px;font-size:18px}
+.ans div.in{color:var(--text);border-color:var(--yellow);background:rgba(247,244,106,.07)}
+.ans div.in:before{content:"✓";background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.vs p{border-radius:12px;padding:16px 18px;font-size:15px;border:1px dashed #4a4234;color:var(--mute)}
+.vs p b{display:block;font:700 22px/1.1 Oswald,sans-serif;text-transform:uppercase;color:var(--text);margin-bottom:4px}
+.vs p.w{border:1px solid var(--yellow);color:#ddd8cc}.vs p.w b{color:var(--yellow)}
+.team{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.team div{border:2px dashed #5a5140;border-radius:14px;padding:22px;color:var(--mute);font-size:14px;display:flex;gap:16px;align-items:center}
+.team i{flex:none;width:72px;height:72px;border-radius:50%;background:#1f1a13;display:grid;place-items:center;font-style:normal;font-size:11px}
+.team b{display:block;font:700 20px/1.1 Oswald,sans-serif;text-transform:uppercase;color:var(--text);margin-bottom:4px}
+#bar{position:fixed;top:0;left:0;height:3px;background:var(--yellow);width:0;z-index:20}
+.row .prc{font:600 13px Inter,sans-serif;color:var(--mute);align-self:center}
+.row.up .prc{color:var(--yellow)}
+.ppl{grid-column:1/-1;display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin:10px 0 6px}
+.ppl svg{width:100%;height:auto;fill:#3a3328;transition:fill .35s,transform .35s}
+.ppl svg.on{fill:#cfc9bc;transform:translateY(-3px)}
+.row.up .ppl svg.on{fill:var(--yellow)}
+.row .cap{grid-column:1/-1;font-size:15px;color:#cfc9bc}
+.row .cap b{font:700 28px/1 Oswald,sans-serif;color:var(--text);margin-right:6px}
+.row.up .cap b{color:var(--yellow)}
+.dash.done .row.dn{opacity:.8}
+.stats-h{margin-top:64px}
+.stats-h .tag{margin-bottom:14px}
+/* примеры креативов */
+.adz{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px;max-width:680px}
+.adz figure{container-type:inline-size}
+.ph{aspect-ratio:9/16;border-radius:9cqw;border:1.6cqw solid #2b251d;overflow:hidden;position:relative;font-size:5cqw}
+.ph.bad{background:linear-gradient(160deg,#2f6bff,#7a2fff 60%,#ff4fa3);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6cqw;gap:3cqw;filter:saturate(.85)}
+.ph.bad b{font:700 13cqw/1 Oswald,sans-serif;text-transform:uppercase}
+.ph.bad em{font-style:normal;background:#ffe600;color:#d4001a;font:700 8cqw/1 Oswald,sans-serif;padding:2cqw 4cqw;border-radius:2cqw;transform:rotate(-6deg);text-transform:uppercase}
+.ph.bad small{font-size:5cqw;opacity:.95}
+.ph.bad u{text-decoration:none;background:#fff;color:#2f6bff;font:700 6cqw/1 Inter,sans-serif;padding:3.5cqw 7cqw;border-radius:20cqw;margin-top:2cqw}
+.ph.good{background:radial-gradient(120% 70% at 50% 30%,#6b4a2c,#2a1c11 55%,#0d0b09)}
+.ph.good .hd{position:absolute;left:50%;top:22%;width:30cqw;height:30cqw;border-radius:50%;background:#d9a57c;transform:translateX(-50%)}
+.ph.good .bd{position:absolute;left:50%;top:48%;width:66cqw;height:60cqw;border-radius:33cqw 33cqw 0 0;background:#1d1a17;transform:translateX(-50%)}
+.ph.good .rec{position:absolute;top:5cqw;left:6cqw;font:600 4.4cqw Inter,sans-serif;color:#fff;opacity:.85}
+.ph.good .sub{position:absolute;left:5cqw;right:5cqw;bottom:20cqw;text-align:center;font:700 9.5cqw/1.05 Oswald,sans-serif;text-transform:uppercase;color:#fff;text-shadow:0 .6cqw 3cqw rgba(0,0,0,.8);opacity:0;animation:sb 10s infinite}
+.ph.good .sub i{font-style:normal;color:var(--yellow)}
+.ph.good .sub:nth-of-type(2){animation-delay:2.5s}.ph.good .sub:nth-of-type(3){animation-delay:5s}.ph.good .sub:nth-of-type(4){animation-delay:7.5s}
+@keyframes sb{0%{opacity:0;transform:scale(.85)}2%,23%{opacity:1;transform:none}25%,100%{opacity:0}}
+.ph.good .pb{position:absolute;left:5cqw;right:5cqw;bottom:8cqw;height:1.4cqw;background:rgba(255,255,255,.25);border-radius:2cqw;overflow:hidden}
+.ph.good .pb:after{content:"";position:absolute;inset:0;background:var(--yellow);transform-origin:left;animation:pb 10s linear infinite}
+@keyframes pb{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.adz .dots{display:flex;gap:6px;justify-content:center;margin:14px 0 8px}
+.adz .dots i{width:26px;height:26px;border-radius:50%;border:2px solid #4a4234;display:grid;place-items:center;font:700 13px Inter,sans-serif;font-style:normal;color:#6b6352}
+.adz .dots i:before{content:"?"}
+.adz .ok i{animation:dk 10s infinite}
+.adz .ok i:before{content:"✓"}
+.adz .ok i:nth-child(2){animation-name:dk2}.adz .ok i:nth-child(3){animation-name:dk3}.adz .ok i:nth-child(4){animation-name:dk4}
+@keyframes dk{0%,12%{background:transparent;border-color:#4a4234;color:transparent}14%,96%{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}100%{background:transparent;color:transparent}}
+@keyframes dk2{0%,37%{background:transparent;border-color:#4a4234;color:transparent}39%,96%{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}100%{background:transparent;color:transparent}}
+@keyframes dk3{0%,62%{background:transparent;border-color:#4a4234;color:transparent}64%,96%{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}100%{background:transparent;color:transparent}}
+@keyframes dk4{0%,87%{background:transparent;border-color:#4a4234;color:transparent}89%,96%{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}100%{background:transparent;color:transparent}}
+.adz figcaption{text-align:center;font-size:14px;color:var(--mute)}
+.adz figcaption b{display:block;font:700 19px/1.15 Oswald,sans-serif;text-transform:uppercase;color:var(--text);margin-bottom:4px}
+.adz .w figcaption b{color:var(--yellow)}
+/* воронки */
+.fun{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0 18px}
+.fun>div{border:2px solid var(--ink);border-radius:12px;padding:22px;background:#fff}
+.fun .win{background:var(--yellow)}
+.fun h3{margin-bottom:4px}
+.fun .sub{font-size:14px;color:#4a463d;margin-bottom:16px}
+.bar{margin-top:10px;font-size:13px}
+.bar i{display:block;height:30px;background:var(--ink);border-radius:5px;width:0;min-width:4px;transition:width 1.1s cubic-bezier(.2,.8,.2,1);margin-top:3px}
+.bar span{display:flex;justify-content:space-between}
+.bar b{font-weight:600}
+.res{border-top:2px solid var(--ink);margin-top:18px;padding-top:12px;display:flex;justify-content:space-between;align-items:baseline}
+.res b{font:700 44px/1 Oswald,sans-serif}
+.fun dl{display:grid;grid-template-columns:1fr auto;gap:6px 12px;font-size:15px;margin-bottom:6px}.fun dd{font-weight:600}
+
+/* калькулятор */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px}
+.calc label{display:flex;justify-content:space-between;font-size:15px;color:#cfc9bc;margin-top:20px}
+.calc label:first-child{margin-top:0}
+.calc label b{color:var(--text);font:700 22px/1 Oswald,sans-serif}
+input[type=range]{width:100%;accent-color:var(--yellow);margin-top:10px;height:28px}
+.out{border-left:1px solid var(--line);padding-left:32px;display:flex;flex-direction:column;justify-content:center}
+.out .big{font:700 clamp(64px,11vw,104px)/1 Oswald,sans-serif;color:var(--yellow)}
+.out p{color:#cfc9bc;margin-top:6px}
+.out .mini{display:flex;gap:28px;margin:20px 0 24px}
+.out .mini b{display:block;font:700 28px/1 Oswald,sans-serif;color:var(--text)}
+.out .mini span{font-size:13px;color:var(--mute)}
+
+/* шаги */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column}
+.step .num{color:var(--yellow);font:700 14px/1 Oswald,sans-serif;letter-spacing:.12em;margin-bottom:12px}
+.step p{color:#bfb8aa;font-size:15px;margin-top:8px}
+.viz{height:92px;margin-top:auto;padding-top:18px;display:flex;align-items:flex-end;gap:8px}
+.v1{align-items:center;position:relative}
+.v1 em{font:600 12px Inter;font-style:normal;border:1px solid #4a4234;border-radius:6px;padding:7px 8px;background:#0f0d0a;z-index:1}
+.v1 em:last-of-type{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+.v1 u{flex:1;height:2px;background:#4a4234;position:relative;overflow:hidden}
+.v1 u:after{content:"";position:absolute;inset:0;width:40%;background:var(--yellow);animation:flow 1.6s linear infinite}
+@keyframes flow{from{transform:translateX(-100%)}to{transform:translateX(250%)}}
+.v2 s{flex:1;height:64px;border-radius:6px;background:#2b251d;text-decoration:none;font:700 11px Oswald;color:#8a8273;padding:6px;animation:fr 3s infinite}
+.v2 s:nth-child(2){animation-delay:1s}.v2 s:nth-child(3){animation-delay:2s}
+@keyframes fr{0%,30%{background:var(--yellow);color:var(--ink)}34%,100%{background:#2b251d;color:#8a8273}}
+.v3{flex-direction:column;align-items:stretch;gap:6px}
+.v3 em{font:500 12px Inter;font-style:normal;border:1px solid #4a4234;border-radius:6px;padding:6px 8px;color:#cfc9bc}
+.v3 em:nth-child(2){animation:pick 3s infinite}
+@keyframes pick{0%,40%{background:transparent;color:#cfc9bc}50%,100%{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}}
+.v4 i{flex:1;border-radius:5px 5px 0 0;background:#3a3328}
+.v4 i:nth-child(1){height:60%;animation:dn 3s ease-in-out infinite alternate}
+.v4 i:nth-child(2){height:30%;background:var(--yellow);animation:up 3s ease-in-out infinite alternate}
+.v4 i:nth-child(3){height:40%}
+@keyframes up{to{height:100%}}@keyframes dn{to{height:8%}}
+
+/* видео */
+.video{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#000;margin-top:28px}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* примеры сценариев */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 20px}
+.tabs button{font:600 15px Inter;border:2px solid var(--ink);background:transparent;border-radius:100px;padding:10px 16px;cursor:pointer;color:var(--ink)}
+.tabs button.on{background:var(--ink);color:var(--yellow)}
+.frames{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.frame{background:#fff;border:2px solid var(--ink);border-radius:12px;padding:18px;opacity:0;transform:translateY(14px);animation:fin .45s forwards}
+.frame:nth-child(2){animation-delay:.12s}.frame:nth-child(3){animation-delay:.24s}.frame:nth-child(4){animation-delay:.36s}.frame:nth-child(5){animation-delay:.48s}
+@keyframes fin{to{opacity:1;transform:none}}
+.frame .t{font:700 13px Oswald;letter-spacing:.1em;text-transform:uppercase;color:#6b6657}
+.frame .q{font:600 16px/1.35 Inter,sans-serif;margin:10px 0 0}
+.frame .t b{display:block;font-size:26px;color:var(--ink);letter-spacing:0;margin-bottom:2px}
+.frame .c{font-size:14px;color:#4a463d;border-top:1px dashed #b9b3a4;padding-top:10px}
+
+/* кейсы */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.case{border:2px dashed #5a5140;border-radius:14px;padding:22px}
+.case .shot{aspect-ratio:16/10;border-radius:8px;background:repeating-linear-gradient(45deg,#18140f,#18140f 10px,#1f1a13 10px,#1f1a13 20px);display:grid;place-items:center;color:#6b6352;font-size:13px;margin:14px 0}
+.case .kp{display:flex;gap:18px;margin-top:12px}
+.case .kp b{display:block;font:700 28px/1 Oswald;color:var(--yellow)}
+.case .kp span{font-size:12px;color:var(--mute)}
+.case p{font-size:14px;color:var(--mute);margin-top:10px}
+
+/* подходит */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.fit>div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
+.fit ul{list-style:none;margin-top:10px}
+.fit li{padding:8px 0 8px 26px;position:relative;color:#d6d0c3;font-size:16px}
+.fit li:before{position:absolute;left:0;font-weight:700;font-size:19px;line-height:1.25}
+.fit .yes li:before{content:"+";color:var(--yellow)}.fit .no li:before{content:"–";color:#8a8273}
+
+/* квиз */
+.quiz{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.quiz ol{list-style:none;counter-reset:a;margin-top:22px}
+.quiz ol li{counter-increment:a;padding:12px 0 12px 48px;position:relative;color:#ddd8cc}
+.quiz ol li:before{content:"0" counter(a);position:absolute;left:0;top:10px;font:700 24px/1 Oswald;color:var(--yellow)}
+form{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;min-height:420px}
+.prog{height:4px;background:#2b251d;border-radius:4px;margin-bottom:22px;overflow:hidden}
+.prog i{display:block;height:100%;width:33%;background:var(--yellow);transition:width .35s}
+.qs{display:none}.qs.on{display:block;animation:fin .35s forwards}
+.qs h3{margin-bottom:16px}
+.opt{display:block;width:100%;text-align:left;background:#0f0d0a;border:1px solid #3a3328;border-radius:10px;color:var(--text);font:500 16px Inter;padding:15px 16px;margin-top:8px;cursor:pointer;transition:.15s}
+.opt:hover{border-color:var(--yellow);transform:translateX(4px)}
+form input{width:100%;background:#0f0d0a;border:1px solid #3a3328;border-radius:10px;color:var(--text);font:400 16px Inter;padding:15px;margin-top:8px}
+form input:focus{outline:2px solid var(--yellow);outline-offset:1px}
+form .btn{width:100%;margin-top:16px;text-align:center}
+.back{background:none;border:0;color:var(--mute);font:500 14px Inter;margin-top:14px;cursor:pointer}
+#msg{font-size:14px;color:var(--yellow);margin-top:12px}
+
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{font:600 18px/1.35 Inter;cursor:pointer;list-style:none;padding-right:36px;position:relative}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";position:absolute;right:0;top:-5px;font-size:28px;color:var(--yellow);font-weight:400}
+details[open] summary:after{content:"–"}
+details p{color:#cfc9bc;margin-top:10px;max-width:720px}
+
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:13px;color:var(--mute)}
+.sticky{position:fixed;left:0;right:0;bottom:0;background:rgba(13,11,9,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:10px 16px;z-index:10}
+.sticky .btn{display:block;text-align:center;padding:16px;font-size:17px}
+
+@media(min-width:901px){.sticky{display:none}body{padding-bottom:0}section{padding:92px 0}.hero{padding:40px 0 96px}}
+@media(max-width:900px){
+  .hero .wrap,.fun,.calc,.frames,.cases,.fit,.quiz,.team{grid-template-columns:1fr}
+  .ans{grid-template-columns:1fr 1fr}.hero .stats{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .out{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:24px}
+  .hero .wrap{gap:36px}
+}
+@media(max-width:520px){.steps,.vs{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.frame{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<div class="tick" aria-hidden="true"><div>
+  <span>Считаем оплаты, а не заявки</span>✦<span>Meta Ads для образования</span>✦<span>10–20 сценариев роликов в месяц</span>✦<span>Статика без лимита</span>✦<span>Прогрев до звонка</span>✦
+  <span>Считаем оплаты, а не заявки</span>✦<span>Meta Ads для образования</span>✦<span>10–20 сценариев роликов в месяц</span>✦<span>Статика без лимита</span>✦<span>Прогрев до звонка</span>✦
+</div></div>
+
+<nav><div class="wrap">
+  <span class="logo">Таргет <span class="y">для учебных центров</span></span>
+  <a class="s" href="#razbor">Экскурсия <span class="y">→</span></a>
+</div></nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="tag">Meta Ads для учебных центров</span>
+      <h1>Вам нужны не заявки. Вам нужны <span class="y">оплаты</span>.</h1>
+      <p class="lead">Реклама в Meta для детских центров, языковых школ, школ программирования и подготовки к поступлению. Ролики прогревают родителей ещё до звонка. Аналитика показывает, какой ролик приносит деньги.</p>
+      <a href="#razbor" class="btn">Примерить на мой центр</a>
+      <p class="under">Онлайн-экскурсия по системе и разбор вашего проекта · бесплатно</p>
+    </div>
+    <div class="dash" id="dash">
+      <div class="hd"><span>Одна школа программирования. Две рекламы.</span><span class="ex">из проекта</span></div>
+      <div class="row dn">
+        <span class="nm">Реклама «в лоб»</span><span class="prc">заявка $2–3</span>
+        <div class="ppl" data-on="2"><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg></div>
+        <p class="cap"><b>2 из 10</b>реально хотят учиться</p>
+      </div>
+      <div class="row up">
+        <span class="nm">Ролик с прогревом</span><span class="prc">заявка $5–6</span>
+        <div class="ppl" data-on="6"><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg><svg viewBox="0 0 20 34"><circle cx="10" cy="7" r="6"/><path d="M1 34V22a9 9 0 0 1 18 0v12z"/></svg></div>
+        <p class="cap"><b>6 из 10</b>реально хотят учиться</p>
+      </div>
+      <p class="ft">Заявка вдвое дороже. Людей, готовых учиться, втрое больше.</p>
+    </div>
+  </div>
+  <div class="wrap stats-h"><span class="tag">Наш опыт в цифрах</span></div>
+  <div class="wrap stats">
+    <div><b><span data-n="3000000" data-p="$">$0</span>+</b><span>вложили в рекламу наших клиентов за всё время</span></div>
+    <div><b>10–20</b><span>новых роликов пишем каждому центру в месяц</span></div>
+    <div><b>до $5 000</b><span>в день тратим на рекламу одного проекта, и заявки не становятся хуже</span></div>
+  </div>
+</header>
+
+<!-- ПРОБЛЕМА -->
+<section class="paper">
+  <div class="wrap">
+    <span class="tag">Почему заявки есть, а группы пустые</span>
+    <h2 class="rv">2 880 заявок. <span class="mark">20 оплат.</span></h2>
+    <p class="lead rv">Так выглядела реклама учебного центра до нас. Заявки по 52 цента, отдел продаж завален, группы не набраны.</p>
+    <div class="fun" id="fun">
+      <div>
+        <h3>До нас</h3><p class="sub">Дешёвые заявки · месяц</p>
+        <dl><dt>Бюджет</dt><dd>$1 500</dd><dt>В кассе</dt><dd>$6 475</dd></dl>
+        <div class="bar"><span>Заявки <b>2 880</b></span><i data-w="100"></i></div>
+        <div class="bar"><span>Оплаты <b>20</b></span><i data-w="20"></i></div>
+        <div class="res"><span>Цена ученика</span><b>$75</b></div>
+      </div>
+      <div class="win">
+        <h3>С нами</h3><p class="sub">Прогретые заявки · месяц</p>
+        <dl><dt>Бюджет</dt><dd>$3 000</dd><dt>В кассе</dt><dd>$14 000</dd></dl>
+        <div class="bar"><span>Заявки <b>1 185</b></span><i data-w="41"></i></div>
+        <div class="bar"><span>Оплаты <b>98</b></span><i data-w="98"></i></div>
+        <div class="res"><span>Цена ученика</span><b>$31</b></div>
+      </div>
+    </div>
+    <span class="ex">проект учебного центра · полосы заявок и оплат в разном масштабе</span>
+    <p class="lead rv" style="margin-top:20px"><b>Заявок в 2,4 раза меньше. Оплат почти в 5 раз больше.</b> Менеджеры перестали обзванивать тех, кто не помнит, что оставлял заявку.</p>
+  </div>
+</section>
+
+<!-- 4 ОТВЕТА -->
+<section>
+  <div class="wrap">
+    <span class="tag">Почему дешёвые заявки не платят</span>
+    <h2 class="rv">Человек не платит, пока не получил <span class="y">4 ответа</span></h2>
+    <div class="ans" id="ans">
+      <div>Зачем это моему ребёнку?</div>
+      <div>Почему у вас?</div>
+      <div>Почему за эту цену?</div>
+      <div>Почему сейчас?</div>
+    </div>
+    <div class="adz">
+      <figure class="rv">
+        <div class="ph bad"><small>Английский для детей</small><b>Пробный урок бесплатно!</b><em>Скидка 30%</em><small>ул. Примерная, 12</small><u>Записаться</u></div>
+        <div class="dots"><i></i><i></i><i></i><i></i></div>
+        <figcaption><b>Картинка «в лоб»</b>0 ответов из 4. Телефон оставляют из любопытства.</figcaption>
+      </figure>
+      <figure class="rv w">
+        <div class="ph good"><span class="rec">▶ 2:00</span><span class="hd"></span><span class="bd"></span>
+          <p class="sub">Три года учит — <i>и молчит?</i></p>
+          <p class="sub">На уроке говорит <i>ученик</i></p>
+          <p class="sub">Вот как это <i>выглядит</i></p>
+          <p class="sub">Приходите <i>на пробный</i></p>
+          <span class="pb"></span></div>
+        <div class="dots ok"><i></i><i></i><i></i><i></i></div>
+        <figcaption><b>Ролик на 2 минуты</b>4 ответа из 4, ещё до звонка менеджера.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- КАЛЬКУЛЯТОР -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="tag">Проверьте на своих цифрах</span>
+    <h2 class="rv">Сколько вам стоит <span class="y">один ученик</span>?</h2>
+    <p class="lead rv">Подвигайте ползунки. Займёт 20 секунд.</p>
+    <div class="calc rv">
+      <div>
+        <label>Рекламный бюджет в месяц <b id="vB"></b></label>
+        <input type="range" id="iB" min="500" max="20000" step="100" value="2000" aria-label="Рекламный бюджет в месяц">
+        <label>Заявок в месяц <b id="vL"></b></label>
+        <input type="range" id="iL" min="10" max="1500" step="10" value="400" aria-label="Заявок в месяц">
+        <label>Оплат в месяц <b id="vP"></b></label>
+        <input type="range" id="iP" min="1" max="150" step="1" value="8" aria-label="Оплат в месяц">
+      </div>
+      <div class="out">
+        <span class="tag">Цена ученика</span>
+        <div class="big" id="oCost"></div>
+        <div class="mini">
+          <div><b id="oLead"></b><span>цена заявки</span></div>
+          <div><b id="oConv"></b><span>заявок доходит до оплаты</span></div>
+        </div>
+        <p id="oLost"></p>
+        <a href="#razbor" class="btn" style="margin-top:22px;align-self:flex-start">Найти, где они теряются</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- СИСТЕМА -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="tag">Как мы работаем</span>
+    <h2 class="rv">Система <span class="y">«Двухминутный прогрев»</span></h2>
+    <p class="lead rv">Реклама продаёт до звонка менеджера. Мы считаем, сколько она принесла в кассу.</p>
+    <div class="steps">
+      <div class="step rv">
+        <span class="num">/// 001</span>
+        <h3>Ролики, которые прогревают</h3>
+        <p>1,5–3 минуты. Выглядят как рилс, а не реклама. Без «последних мест» и скидок.</p>
+        <div class="viz v2"><s>0:00 Хук</s><s>0:40 Причина</s><s>1:40 Призыв</s></div>
+      </div>
+      <div class="step rv">
+        <span class="num">/// 002</span>
+        <h3>Запас креативов</h3>
+        <p>10–20 сценариев в месяц с раскадровкой и ТЗ. Ролик выгорел — запускаем следующий. Статика без лимита.</p>
+        <div class="viz v3"><em>Сценарий №14 — в запасе</em><em>Сценарий №12 — запущен ✓</em></div>
+      </div>
+      <div class="step rv">
+        <span class="num">/// 003</span>
+        <h3>Аналитика до оплаты</h3>
+        <p>Каждый день по каждому ролику: заявки, квал, пробный урок, оплаты.</p>
+        <div class="viz v1"><em>Ролик</em><u></u><em>Пробный</em><u></u><em>Оплата</em></div>
+      </div>
+      <div class="step rv">
+        <span class="num">/// 004</span>
+        <h3>Рост без просадки</h3>
+        <p>Бюджет растим новыми связками, а не давлением на старые. Цена ученика не уплывает.</p>
+        <div class="viz v4"><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ВИДЕО -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="tag">Смотрите сами</span>
+    <h2 class="rv">Экскурсия по системе <span class="y">за одно видео</span></h2>
+    <div class="video rv">
+      <iframe src="https://kinescope.io/embed/vzmZ86ioGVpH9fbHCsqbjZ" title="Видео о нашем подходе к работе" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ПРИМЕРЫ СЦЕНАРИЕВ -->
+<section class="paper">
+  <div class="wrap">
+    <span class="tag">Что вы получаете на руки</span>
+    <h2 class="rv">Так устроен ролик, после которого <span class="mark">ждут звонка</span></h2>
+    <p class="lead rv">Выберите нишу. Вы получаете сценарий, раскадровку и ТЗ — снимаете на телефон.</p>
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div class="frames" id="frames"></div>
+    <p style="margin-top:16px"><span class="ex">пример структуры сценария</span></p>
+  </div>
+</section>
+
+<!-- КЕЙСЫ -->
+<section id="cases">
+  <div class="wrap">
+    <span class="tag">Результаты</span>
+    <h2 class="rv">Кейсы в <span class="y">образовании</span></h2>
+    <div class="cases">
+      <div class="case rv"><span class="ex">место под кейс 1</span>
+        <h3 style="margin-top:12px">Языковая школа, город</h3>
+        <div class="shot">скриншот кабинета / таблицы оплат</div>
+        <div class="kp"><div><b>$XX → $XX</b><span>цена ученика</span></div><div><b>×X</b><span>оплат в месяц</span></div></div>
+        <p>Одна строка: с чем пришли и что изменили.</p></div>
+      <div class="case rv"><span class="ex">место под кейс 2</span>
+        <h3 style="margin-top:12px">Детский центр, город</h3>
+        <div class="shot">скриншот кабинета / таблицы оплат</div>
+        <div class="kp"><div><b>$XX → $XX</b><span>цена ученика</span></div><div><b>XX%</b><span>доходимость до оплаты</span></div></div>
+        <p>Одна строка: с чем пришли и что изменили.</p></div>
+      <div class="case rv"><span class="ex">место под кейс 3</span>
+        <h3 style="margin-top:12px">Школа программирования, город</h3>
+        <div class="shot">скриншот кабинета / таблицы оплат</div>
+        <div class="kp"><div><b>$XX → $XX</b><span>цена ученика</span></div><div><b>$XX тыс.</b><span>бюджет в месяц</span></div></div>
+        <p>Одна строка: с чем пришли и что изменили.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- КТО МЫ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="tag">Кто ведёт проект</span>
+    <h2 class="rv">Работаем <span class="y">вдвоём</span></h2>
+    <div class="team">
+      <div class="rv"><i>фото</i><p><b>Рафаэль</b>Одна строка: чем занимается в проекте и главный результат.</p></div>
+      <div class="rv"><i>фото</i><p><b>Рустам</b>Одна строка: чем занимается в проекте и главный результат.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- КОМУ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="tag">Берём не всех</span>
+    <h2 class="rv">Нам <span class="y">по пути</span>, если</h2>
+    <div class="fit">
+      <div class="yes rv"><h3>Да</h3><ul>
+        <li>Бюджет на рекламу от $1 500 в месяц</li>
+        <li>Кто-то обрабатывает заявки и ведёт учёт оплат</li>
+        <li>Команда готова снимать ролики на телефон</li>
+        <li>Вы покажете цифры продаж</li>
+      </ul></div>
+      <div class="no rv"><h3>Нет</h3><ul>
+        <li>Нужно «побольше лидов подешевле»</li>
+        <li>Снимать некому</li>
+        <li>Оплаты закрыты от подрядчика</li>
+        <li>Заявки обрабатывают через день</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- КВИЗ -->
+<section id="razbor" style="padding-top:0">
+  <div class="wrap quiz">
+    <div>
+      <span class="tag">Первый шаг · бесплатно</span>
+      <h2>Онлайн-экскурсия: примерим систему на <span class="y">ваш центр</span></h2>
+      <ol>
+        <li>Покажем систему изнутри: сценарии, связки, отчёты</li>
+        <li>Посчитаем вашу цену ученика и где теряются люди</li>
+        <li>Скажем, какие ролики сняли бы под ваш продукт</li>
+        <li>Скажем прямо, если не видим, как окупить рекламу</li>
+      </ol>
+    </div>
+    <form id="f" novalidate>
+      <div class="prog"><i id="pr"></i></div>
+      <div class="qs on" data-k="niche">
+        <h3>1 из 3 · Что у вас?</h3>
+        <button type="button" class="opt">Детский центр</button>
+        <button type="button" class="opt">Языковая школа</button>
+        <button type="button" class="opt">Школа программирования</button>
+        <button type="button" class="opt">Подготовка к поступлению / за рубеж</button>
+        <button type="button" class="opt">Другое в образовании</button>
+      </div>
+      <div class="qs" data-k="budget">
+        <h3>2 из 3 · Бюджет на рекламу в месяц</h3>
+        <button type="button" class="opt">До $1 500</button>
+        <button type="button" class="opt">$1 500 – $5 000</button>
+        <button type="button" class="opt">Больше $5 000</button>
+        <button type="button" class="back">← Назад</button>
+      </div>
+      <div class="qs">
+        <h3>3 из 3 · Куда вам написать?</h3>
+        <input name="name" placeholder="Имя" autocomplete="name" required aria-label="Имя">
+        <input name="company" placeholder="Сайт или Instagram центра" required aria-label="Сайт или Instagram центра">
+        <input name="contact" placeholder="Telegram или WhatsApp" required aria-label="Telegram или WhatsApp">
+        <button class="btn" type="submit">Записаться на экскурсию</button>
+        <p id="msg" role="status"></p>
+        <button type="button" class="back">← Назад</button>
+      </div>
+      <div class="qs" id="ok">
+        <h3 class="y" style="font-size:34px">Заявка принята</h3>
+        <p style="margin-top:12px;color:#cfc9bc">Напишем вам в течение рабочего дня и договоримся о времени.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="tag">Вопросы</span>
+    <h2>Коротко о главном</h2>
+    <details><summary>У нас уже есть таргетолог</summary>
+      <p>Спросите его: какой креатив за месяц принёс больше всего оплат и сколько стоила одна. Если ответ есть — менять ничего не нужно. Если в ответ вы слышите цену лида — приходите на экскурсию.</p></details>
+    <details><summary>Двухминутную рекламу правда смотрят?</summary>
+      <p>Смотрят, если она написана как рилс, а не как реклама. После неё люди помнят, что оставляли заявку, и сами ждут звонка.</p></details>
+    <details><summary>У нас нет CRM</summary>
+      <p>Хватит таблицы: кто оплатил, когда, контакт. Аналитику соберём под то, что есть.</p></details>
+    <details><summary>У нас нет оператора</summary>
+      <p>Он не нужен. Ролики снимаются на телефон: преподаватель, администратор, руководитель. В ТЗ написано, что говорить и как держать кадр.</p></details>
+    <details><summary>Заявки станут дороже?</summary>
+      <p>Да. В школе программирования заявки по $2–3 давали 15–20% квала, а по $5–6 — от 60%. Смотрим на цену ученика, а не заявки.</p></details>
+    <details><summary>Вы гарантируете результат?</summary>
+      <p>Число оплат зависит ещё от продукта, цены и отдела продаж, поэтому честно его не обещает никто. Мы гарантируем, что вы всегда видите, сколько стоит ученик и окупается ли реклама.</p></details>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <p>[Имена, контакты, Telegram, политика конфиденциальности — вставить]</p>
+  <p style="margin-top:8px">Сайт не является частью Meta Platforms, Inc. и не связан с ней.</p>
+</div></footer>
+
+<div class="sticky"><a href="#razbor" class="btn">Примерить на мой центр</a></div>
+
+<script>
+// ===== НАСТРОЙКА: адрес, куда отправлять заявки (вебхук CRM, бота или формы). Пока пусто — заявки не уходят.
+var ENDPOINT = '';
+
+var $ = function (s, r) { return (r || document).querySelector(s); };
+var $$ = function (s, r) { return [].slice.call((r || document).querySelectorAll(s)); };
+var fmt = function (n) { return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '); };
+
+// появление блоков, счётчики и полосы воронки
+function countUp(el) {
+  var to = +el.dataset.n, p = el.dataset.p || '', t0 = performance.now();
+  (function step(t) {
+    var k = Math.min((t - t0) / 1300, 1), e = 1 - Math.pow(1 - k, 3);
+    el.textContent = p + fmt(to * e);
+    if (k < 1) requestAnimationFrame(step);
+  })(t0);
+}
+var io = new IntersectionObserver(function (es) {
+  es.forEach(function (e) {
+    if (!e.isIntersecting) return;
+    var el = e.target; io.unobserve(el);
+    if (el.id === 'dash') { $$('.ppl', el).forEach(function (pp, r) { $$('svg', pp).slice(0, +pp.dataset.on).forEach(function (m, i) { setTimeout(function () { m.classList.add('on'); }, 300 + r * 500 + i * 160); }); }); setTimeout(function () { el.classList.add('done'); }, 1200); }
+    else if (el.id === 'fun') { $$('i', el).forEach(function (b, i) { setTimeout(function () { b.style.width = b.dataset.w + '%'; }, (i % 2) * 250); }); }
+    else if (el.id === 'ans') { $$('div', el).forEach(function (d, i) { setTimeout(function () { d.classList.add('in'); }, 300 + i * 450); }); }
+    else if (el.dataset.n) countUp(el);
+    else el.classList.add('in');
+  });
+}, { threshold: .2 });
+$$('.rv').forEach(function (el, i) { el.style.transitionDelay = (i % 4) * 70 + 'ms'; io.observe(el); });
+io.observe($('#dash')); io.observe($('#fun')); io.observe($('#ans')); $$('.stats [data-n]').forEach(function (e) { io.observe(e); });
+addEventListener('scroll', function () { var h = document.documentElement; $('#bar').style.width = h.scrollTop / (h.scrollHeight - innerHeight) * 100 + '%'; }, { passive: true });
+
+// калькулятор цены ученика
+function calc() {
+  var B = +$('#iB').value, L = +$('#iL').value, P = Math.min(+$('#iP').value, L);
+  $('#vB').textContent = '$' + fmt(B); $('#vL').textContent = fmt(L); $('#vP').textContent = P;
+  $('#oCost').textContent = '$' + fmt(B / P);
+  $('#oLead').textContent = '$' + (B / L < 10 ? (B / L).toFixed(1).replace('.', ',') : fmt(B / L));
+  $('#oConv').textContent = (P / L * 100).toFixed(1).replace('.', ',') + '%';
+  $('#oLost').innerHTML = '<b style="color:#f5f2ea">' + fmt(L - P) + ' из ' + fmt(L) + '</b> заявок не дошли до оплаты. Менеджеры обработали их впустую.';
+}
+['iB', 'iL', 'iP'].forEach(function (id) { $('#' + id).addEventListener('input', calc); }); calc();
+
+// примеры сценариев по нишам
+var EX = {
+  'Детский центр': ['«Ребёнок не может усидеть и пяти минут? Дело не в нём»', '«Вы пробовали кружки, но через месяц он просит не ходить»', '«Обычное занятие — 40 минут за партой. В 5 лет это невозможно»', '«У нас задание меняется каждые 7 минут. Покажу, как это выглядит»', '«Приходите на пробное и посмотрите сами, как он включится»'],
+  'Языковая школа': ['«Три года учит английский — и молчит?»', '«Знает правила, пишет тесты, а на живой вопрос теряется»', '«На обычном уроке ученик говорит пару минут из шестидесяти»', '«У нас говорит ученик, а не преподаватель. Вот фрагмент урока»', '«На пробном уроке вы услышите, как он заговорит»'],
+  'Программирование': ['«Он играет по 4 часа в день. Это можно развернуть в профессию»', '«Запрещать бесполезно: телефон всё равно побеждает»', '«Ему интересно не играть, а управлять. Этому нигде не учат»', '«На занятии он пишет свою игру. Вот проект ученика за месяц»', '«С пробного занятия он уйдёт со своей первой мини-игрой»'],
+  'Поступление': ['«До экзамена 8 месяцев. Вот что ещё можно успеть»', '«Репетитор есть, а пробные тесты стоят на месте»', '«Готовятся “по всему”, а баллы теряются в трёх темах»', '«Сначала диагностика: находим эти темы и строим план по неделям»', '«Запишитесь на диагностику — уйдёте с планом подготовки»']
+};
+var BEATS = [['0:00', 'Хук'], ['0:10', 'Боль'], ['0:40', 'Причина'], ['1:10', 'Решение'], ['1:40', 'Мягкий призыв']];
+function showEx(name) {
+  $$('#tabs button').forEach(function (b) { b.classList.toggle('on', b.textContent === name); });
+  $('#frames').innerHTML = EX[name].map(function (q, i) {
+    return '<div class="frame"><div class="t"><b>' + BEATS[i][0] + '</b>' + BEATS[i][1] + '</div><div class="q">' + q + '</div></div>';
+  }).join('');
+}
+Object.keys(EX).forEach(function (name) {
+  var b = document.createElement('button'); b.type = 'button'; b.textContent = name;
+  b.addEventListener('click', function () { showEx(name); }); $('#tabs').appendChild(b);
+});
+showEx('Детский центр');
+
+// квиз-заявка
+var steps = $$('.qs'), cur = 0, data = {};
+function go(i) { steps[cur].classList.remove('on'); cur = i; steps[cur].classList.add('on'); $('#pr').style.width = Math.min((cur + 1) / 3 * 100, 100) + '%'; }
+$$('.opt').forEach(function (b) { b.addEventListener('click', function () { data[b.parentNode.dataset.k] = b.textContent; go(cur + 1); }); });
+$$('.back').forEach(function (b) { b.addEventListener('click', function () { go(cur - 1); }); });
+$('#f').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var f = e.target, msg = $('#msg');
+  if (!f.name.value.trim() || !f.company.value.trim() || !f.contact.value.trim()) { msg.textContent = 'Заполните три поля, чтобы мы подготовились к встрече.'; return; }
+  data.name = f.name.value.trim(); data.company = f.company.value.trim(); data.contact = f.contact.value.trim(); data.page = location.pathname;
+  if (!ENDPOINT) { msg.textContent = 'Приём заявок ещё не подключён: заявка не отправлена.'; return; }
+  msg.textContent = 'Отправляем…';
+  fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+    .then(function (r) { if (!r.ok) throw 0; go(3); })
+    .catch(function () { msg.textContent = 'Не получилось отправить. Попробуйте ещё раз.'; });
+});
+</script>
+</body>
+</html>
